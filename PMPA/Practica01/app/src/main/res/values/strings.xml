@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Practica01</string>
+    <string name="resultado">Resultado</string>
+    <string name="introduce_otro_n_mero">Introduce otro número</string>
+    <string name="introduce_un_n_mero">Introduce un número</string>
+    <string name="DIV">DIV</string>
+    <string name="MUL">MUL</string>
+    <string name="RED">RES</string>
+    <string name="RES">RES</string>
+    <string name="SUM">SUM</string>
+</resources>
