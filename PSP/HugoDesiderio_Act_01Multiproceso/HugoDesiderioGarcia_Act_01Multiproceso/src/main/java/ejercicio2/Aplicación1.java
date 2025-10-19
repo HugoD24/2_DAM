@@ -1,5 +1,10 @@
 package ejercicio2;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
 /**
  *      Crea dos aplicaciones
  *          a. Aplicación 1
@@ -18,4 +23,41 @@ package ejercicio2;
  */
 
 public class Aplicación1 {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+
+        System.out.println("Cuantas palabras quieres introducir?");
+        int numPalabras = sc.nextInt();
+        String [] palabras = new String[numPalabras];
+
+        for (int i = 0; i < numPalabras; i++){
+            System.out.println("Introduce la palabra " + (i+1) + ": ");
+            palabras[i] = sc.next();
+        }
+
+        String cadenaPalabras = String.join(" ", palabras);
+
+
+        String RUTA_APP2 = "D:\\HUGO\\Proyectos_2DAM\\2_DAM\\PSP\\HugoDesiderio_Act_01Multiproceso\\HugoDesiderioGarcia_Act_01Multiproceso\\src\\main\\java\\ejercicio2\\Aplicación2.java";
+
+        try {
+            ProcessBuilder pb = new ProcessBuilder("java", RUTA_APP2, cadenaPalabras);
+            pb.redirectErrorStream(true);
+            Process p = pb.start();
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+            p.waitFor();
+        }
+        catch (IOException | InterruptedException e) {
+            System.out.println("Error" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
