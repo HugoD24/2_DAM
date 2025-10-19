@@ -1,5 +1,10 @@
 package ejercicio3;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *      Crea dos aplicaciones
  *          a. Aplicación 1
@@ -22,4 +27,35 @@ package ejercicio3;
 
 
 public class Aplicacion1 {
+    public static void main(String[] args) {
+
+        String nombreFichero = args[0];
+        String queHacer = args[1].toLowerCase();
+        boolean append = false;
+
+        if (queHacer.equals("n")) {
+            append = false;
+        } else if (queHacer.equals("a")) {
+            append = true;
+        } else {
+            System.out.println("Opción inválida. Usa 'n' para nuevo o 'a' para añadir.");
+            return;
+        }
+
+        LocalDateTime ahora = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String fechaHora = ahora.format(formato);
+
+        try {
+            FileWriter escritor = new FileWriter(nombreFichero, append);
+            escritor.write(fechaHora + "\n");
+            escritor.close();
+            System.out.println("Fecha y hora guardadas correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el fichero: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
 }

@@ -1,5 +1,11 @@
 package ejercicio5;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
 /**
  *      Crea dos aplicaciones
  *          Aplicación 1
@@ -18,4 +24,33 @@ package ejercicio5;
  */
 
 public class Aplicación1 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = 1;
+        String cadena = "";
+        String RUTA_APP2 = "D:\\HUGO\\Proyectos_2DAM\\2_DAM\\PSP\\HugoDesiderio_Act_01Multiproceso\\HugoDesiderioGarcia_Act_01Multiproceso\\src\\main\\java\\ejercicio5\\Aplicación2.java";
+
+        while (num>0){
+            System.out.println("Introduce un numero positivo (0 o negativo para salir ): ");
+            num = sc.nextInt();
+            cadena += num + " ";
+        }
+
+        ProcessBuilder pb = new ProcessBuilder("java", RUTA_APP2, cadena);
+
+        try {
+            Process p = pb.start();
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+            bw.write(cadena);
+            bw.close();
+            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                System.out.println(linea);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

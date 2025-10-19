@@ -1,6 +1,12 @@
 package ejercicio4;
 
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *      Crea tres aplicaciones
  *          a. Aplicación 1
@@ -22,5 +28,34 @@ package ejercicio4;
 
 
 
-public class Aplicacion1 {
+public class
+Aplicacion1 {
+    public static void main(String[] args) {
+
+        int min = Integer.parseInt(args[0]);
+        int max = Integer.parseInt(args[1]);
+        String nombreFichero = args[2];
+
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String fechaActual = LocalDateTime.now().format(formato);
+
+        File fichero = new File(nombreFichero);
+        boolean append = fichero.exists();
+
+
+        int temperatura = rand(min, max);
+
+        try {
+            FileWriter fw = new FileWriter(nombreFichero, append);
+            fw.write(temperatura + " - " + fechaActual + System.lineSeparator()); //aqui he guardado la temperatura lo primero siguiendo el consejo que nos diste en clase
+            fw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private static int rand(int min, int max) {
+        return (int) (Math.random() * (max - min + 1)) + min;
+    }
+
 }
+
