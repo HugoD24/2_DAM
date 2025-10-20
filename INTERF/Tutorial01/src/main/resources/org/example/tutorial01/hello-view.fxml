@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" fx:controller="org.example.tutorial01"  xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="86.0" layoutY="107.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -51,7 +51,7 @@
                         <Label text="Street" GridPane.rowIndex="2" />
                         <Label text="City" GridPane.rowIndex="3" />
                         <Label text="Postal Code" GridPane.rowIndex="4" />
-                        <Label text="Label" GridPane.rowIndex="5" />
+                        <Label text="Birthday" GridPane.rowIndex="5" />
                         <Label id="lblName" text="Label" GridPane.columnIndex="1" />
                         <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -62,9 +62,17 @@
                   </GridPane>
                   <HBox layoutX="166.0" layoutY="346.0" spacing="5.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <children>
-                        <Button mnemonicParsing="false" text="New" onAction="#onHelloButtonClickName" />
-                        <Button mnemonicParsing="false" text="Edit"/>
-                        <Button mnemonicParsing="false" text="Delete"/>
+                        <Button mnemonicParsing="false" onAction="#onHelloButtonClick2" text="New..." />
+                        <Button mnemonicParsing="false" text="Edit...">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" text="Delete">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                </children></AnchorPane>
